@@ -1,7 +1,14 @@
-import { gql } from "@apollo/client"
+import { gql } from "@apollo/client";
 
 const fetchWeatherQuery = gql`
-query myQuery($current_weather: String, $daily: String, $hourly: String, $latitude: String, $longitude: String, $timezone: String) {
+  query myQuery(
+    $current_weather: String
+    $daily: String
+    $hourly: String
+    $latitude: String
+    $longitude: String
+    $timezone: String
+  ) {
     myQuery(
       current_weather: $current_weather
       daily: $daily
@@ -81,4 +88,6 @@ query myQuery($current_weather: String, $daily: String, $hourly: String, $latitu
       utc_offset_seconds
     }
   }
-  `
+`;
+
+export default fetchWeatherQuery;
