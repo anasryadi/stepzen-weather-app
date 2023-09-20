@@ -57,6 +57,33 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
               metric={`${results.daily.temperature_2m_min[0].toFixed(1)}°`}
               color="green"
             />
+
+            <div>
+              <StatCard
+                title="UV Index"
+                metric={results.daily.uv_index_max[0].toFixed(1)}
+                color="rose"
+              />
+              {Number(results.daily.uv_index_max[0].toFixed(1)) > 5 && (
+                <CalloutCard
+                message={"The UV is high today, be sure to wear SPF!"}
+                warning
+                />
+              )}
+            </div>
+
+            <div className="flex space-x-3">
+                <StatCard
+                title="Wind Speed"
+                metric={`${results.current_weather.windspeed.toFixed(1)}m/s`}
+                color="cyan"
+                />
+                <StatCard
+                title="Wind Direction"
+                metric={`${results.current_weather.winddirection.toFixed(1)}°`}
+                color="violet"
+                />
+            </div>
           </div>
         </div>
       </div>
