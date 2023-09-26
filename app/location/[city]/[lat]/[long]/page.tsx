@@ -7,6 +7,8 @@ import StatCard from "@/components/StatCard";
 import TempChart from "@/components/TempChart";
 import fetchWeatherQuery from "@/graphql/queries/fetchWeatherQueries";
 
+export const revalidate = 60;
+
 type Props = {
   params: {
     city: string;
@@ -30,7 +32,9 @@ async function WeatherPage({ params: { city, lat, long } }: Props) {
 
   const results: Root = data.myQuery;
 
-  console.log(results);
+  const dataToSend = cleanData(results, city);
+
+  console.log(results.hourly.time);
 
   return (
     <div className="flex flex-col min-h-screen md:flex-row">
